@@ -9,7 +9,12 @@
 To best understand Rails forms, we'll build a form and explain what everything is and what's going on as we go along
 
 # CUD
+
+![Alt Text](https://media.giphy.com/media/Lhiu75VagupBm/giphy.gif)
+
 ## But first, let's set up our rails app
+
+
 
 Fork and clone this repo and follow these steps:
 - cd into `CatApp`
