@@ -1,4 +1,25 @@
-# Rails Forms
+## Rails Forms
+
+-   It may sound strange, but forms are possibly the most complicated thing about learning web development. Not necessarily because the code itself is difficult, but because you usually want to build forms that accomplish so many different things at once.
+
+## To best understand Rails forms, we'll build a form and explain what everything is what's going on as we go along
+
+# CUD
+## Setting up our rails app
+
+Fork and clone this repo and follow these steps:
+- cd into `CatApp`
+- run `bundle install`
+- run `rails db:create`
+- run `rails db:migrate`
+- run `rails db:seed`
+- run `rails s` and visit `localhost:3000`
+
+# Creating a new Cat
+
+So far, we've done `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. What are we going to need? What do we get when we run `rails routes`?
+
+
 
 # How to Write Rails Forms
 https://launchacademy.com/codecabulary/learn-rails/writing-forms
@@ -7,8 +28,6 @@ When you write a form, it will usually correlate with a database table: a signup
 
 Welcome to the world of Rails forms, which give users the ability to submit data into form fields. This can be used for: creating new database records, building a contact form, integrating a search engine field, and pretty much every other aspect of the application that requires user input. When it comes to forms in Rails, you will discover that you will have the flexibility to utilize:
 
-## how forms are working
-This lesson is going to begin by integrating HTML form elements and then slowly start refactoring the form using Rails methods. It would be very easy to integrate form helpers (and we could have our form working in a few minutes). However, fully understanding what Rails is doing behind the scenes is more important than getting the form working right away. 
 
 # regular HTML form
 ```html
@@ -38,32 +57,6 @@ it goes through and explains line by line what each thing is https://learn.co/tr
 <% end %>
 ```
 https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/rails-forms-overview
-
-# form for vs form tag
-
-# form_for
-Binding a Form to an Object
--  what's a form builder (that's what `f` is in the form sequence)
-
-# just to box in the above
-
-THE DIFFERENCES BETWEEN FORM_FOR AND FORM_TAG
-This step will make heavy usage of form_for, the high-powered alternative to form_tag. The biggest difference between these two helpers is that form_for creates a form specifically for a model object. form_for is full of convenient features.
-
-# form_tag
-* form_tag simply creates a form.
-form_tag only create a simply form html, for example, a search:
-```ruby
- <%= form_tag("/search", :method => "get") do %>
-   <%= label_tag(:q, "Search for:") %>
-   <%= text_field_tag(:q) %>
-   <%= submit_tag("Search") %>
-<% end %>
-```
-
-# form_for
-* form_for creates a form for a model object.
-form_for is a bit easier to use for creating forms for a model object because it figures out what url to use and what http method to use depending on whether the object is a new record or a saved record.
 
 
 
