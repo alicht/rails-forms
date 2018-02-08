@@ -150,11 +150,29 @@ and add in:
 ```
 
 ### `link_to` method
+link_to is a Rails built in helper that helps generate an anchor tag. 
+-  view helpers are methods that generate HTML snippets to be placed in a view. 
+
+```ruby
+<%= link_to "New Cat", posts_path %>
+
+<!-- this generates the HTML... -->
+
+<a href="/cats/new">New Cat</a>
+```
+
 As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
+
 
 
 # Let's examine `form_for`
 {{{ it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit }}}
+
+The |f| is an iterator variable that we can use on the new form object that will allow us to dynamically assign form field elements to each of the post data attributes, along with auto filling the values for each field. We get this ActionView functionality because we're using the form_for method, which gives us access to the FormBuilder module in Rails. 
+
+By passing in the attribute as a symbol (e.g. :title) that will automatically tell the form field what model attribute to be associated with.
+
+Because form_for is bound directly with the Post model, we need to pass the model name into the Active Record `update` method in the controller.
 
 We're saying that we expect there to be a `cat` in what we get back from the server, and that cat should have the fields `name` and `breed`.
 
