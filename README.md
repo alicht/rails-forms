@@ -42,15 +42,12 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 
 ```ruby
 <%= form_for(@post) do |f| %>
-  <label>Post title:</label><br>
   <%= f.text_field :title %><br>
- 
-  <label>Post description</label><br>
   <%= f.text_area :description %><br>
- 
   <%= f.submit %>
 <% end %>
 ```
+
 
 -  `form_for` is a ruby method into which a Ruby object is passed. This means that a form that utilizes form_for is directly connected with an Active Record model
 
