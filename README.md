@@ -74,9 +74,24 @@ So far, we've done `index` and `show` methods in our controller. But! We are goi
 
 ## 1) 🚀 Create
 
-Before we can do anything with our cat form, we need two new controller methods: `new` and `create`. `new` won't do anything for now -- it'll just send back our `new.html.erb`. `create`, on the other hand, is going to create a new cat!
+### `new`
 
+Before we can do anything with our cat form, we need two new controller methods: `new` and `create`. `new` won't do anything for now -- it'll just send back our `new.html.erb` page. `create`, on the other hand, is going to create a new cat!
+
+Let's add to our `new` method to our `cats_controller.rb`:
+
+### `new`
 ```rb
+def new
+  @cat = Cat.new
+end
+```
+
+This will creates a blank `cat` object that we're going to pass into our view.
+
+
+### `create`
+```ruby
 def create
   @cat = Cat.new(name: params[:name], breed: params[:breed])
   if @cat.save
@@ -88,7 +103,7 @@ end
 ```
 #### what are `redirect_to` & `cat_path`? What are they doing?
 
-But, wouldn't it be better to check out our params first before we create the cat? We know what a cat needs to have in order to be created. Let's adjust that.
+Also... wouldn't it be better to check out our params first before we create the cat? We know what a cat needs to have in order to be created. Let's adjust that.
 
 ```rb
 def create
@@ -105,36 +120,8 @@ def cat_params
   params.require(:cat).permit(:name, :breed)
 end
 ```
-
-
-# Form_For
-{{{ it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit }}}
-
-We're saying that we expect there to be a `cat` in what we get back from the server, and that cat should have the fields `name` and `breed`.
-
 ### Using the `form_for` helper
 
-So, this is pretty neat so far, right? We can add cats at will! But there is a _better way_ to write that form. Let's take a crack at that.
-
-it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit
-
-```erb
-<%= form_for @cat do |f| %>
-  <%= f.text_field :name, placeholder: "Name" %>
-  <%= f.text_field :breed, placeholder: "Breed" %>
-  <%= f.submit "Add new cat"%>
-<% end %>
-```
-
-Instead of having to write the form ourselves, with the path and the method and the CSRF token and everything, it's now generated for us with this `form_for` tag! Yay!
-
-We also have to add to our `new` method to our `cats_controller.rb`:
-
-```rb
-def new
-  @cat = Cat.new
-end
-```
 
 THEN I need to create a view template for it on `views/cats/new.html.erb`:
 ```ruby
@@ -145,7 +132,27 @@ THEN I need to create a view template for it on `views/cats/new.html.erb`:
 <% end %>
 ```
 
-This creates a blank `cat` object that we're going to pass into our view.
+#### and let's add a link to this on our `index` page so we can see it
+
+`views/cats/index.html.erb`:
+
+and add in: 
+```ruby
+<%= link_to "New Cat", new_cat_path %>
+```
+
+### `link_to` method
+As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
+
+
+# Let's examine `form_for`
+{{{ it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit }}}
+
+We're saying that we expect there to be a `cat` in what we get back from the server, and that cat should have the fields `name` and `breed`.
+
+Instead of having to write the form ourselves, with the path and the method and the CSRF token and everything, it's now generated for us with this `form_for` tag! Yay!
+
+
 ### We now have the ability to create a new cat!!
 
 ## 2) 🚀 Edit
@@ -177,9 +184,6 @@ but...  we want to see the `edit` link on the page:
 ```
 `(@cat)` will transform to the id & make it the right path
 
-### `link_to` method
-As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
-
 
 ### ok, so we refresh... but we still need an UPDATE method
 
@@ -205,17 +209,8 @@ Notes:
 ### Refresh and... EDIT works!!
 
 # 4) 🚀 Delete
-When we delete a cat, we can still use the `form_for` helper -- we just need to give it some additional information.
-Go to `views/cats/show.html.erb`:
 
-```Ruby
-<%= form_for @cat, html: {method: "delete"} do |f| %>
-  <%= f.submit "Delete #{@cat.name}?" %>
-<% end %>
-```
-We're telling the `form_for` helper that in the HTML for this particular form, the method should be `delete`.
-
-### BUT... I also need a `destroy` action 
+### First... I need a `destroy` action 
 First thing we have to do is add the `destroy` action to our `cats_controller.rb`
 
 ```ruby
@@ -225,6 +220,16 @@ First thing we have to do is add the `destroy` action to our `cats_controller.rb
     redirect_to cats_path
   end
 ```
+
+When we delete a cat, we can still use the `form_for` helper -- we just need to give it some additional information.
+Go to `views/cats/show.html.erb`:
+
+```Ruby
+<%= form_for @cat, html: {method: "delete"} do |f| %>
+  <%= f.submit "Delete #{@cat.name}?" %>
+<% end %>
+```
+We're telling the `form_for` helper that in the HTML for this particular form, the method should be `delete`.
 
 
 And we now have CRUD functionality!
