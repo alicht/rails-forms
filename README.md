@@ -108,6 +108,7 @@ def create
   end
 end
 ```
+#### what is redirect_to & cat_path? What are they doing?
 
 But, wouldn't it be better to check out our params first before we create the cat? We know what a cat needs to have in order to be created. Let's adjust that.
 
