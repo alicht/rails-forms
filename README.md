@@ -21,7 +21,7 @@ Fork and clone this repo and follow these steps:
 
 # Creating a new Cat
 
-So far, we have `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. What are we going to need? 
+So far, we have `index` and `show` methods in our controller. But we're going to need some others in order to enable full CRUD functionality. What are we going to need? 
 
 
 
