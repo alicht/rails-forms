@@ -23,11 +23,10 @@ So far, we've done `index` and `show` methods in our controller. But! We are goi
 
 # How to Write Rails Forms
 https://launchacademy.com/codecabulary/learn-rails/writing-forms
-When you write a form, it will usually correlate with a database table: a signup page will enter a new user in the users table and a playlist builder will add song/playlist associations to a joins table that correlates playlists with the songs they contain. Forms are thus a good way to begin thinking about Rails' RESTful architecture, which maps HTTP requests to CRUD queries.
-# boxing off
+When you write a form, it will usually correlate with a database table: a signup page will enter a new user in the users table Forms are thus a good way to begin thinking about Rails' RESTful architecture, which maps HTTP requests to CRUD queries.
+## boxing off
 
-Welcome to the world of Rails forms, which give users the ability to submit data into form fields. This can be used for: creating new database records, building a contact form, integrating a search engine field, and pretty much every other aspect of the application that requires user input. When it comes to forms in Rails, you will discover that you will have the flexibility to utilize:
-
+Welcome to the world of Rails forms, which give users the ability to submit data into form fields.
 
 # regular HTML form
 ```html
