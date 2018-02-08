@@ -78,7 +78,6 @@ Before we can do anything with our cat form, we need two new controller methods:
 
 Let's add to our `new` method to our `cats_controller.rb`:
 
-### `new`
 ```rb
 def new
   @cat = Cat.new
