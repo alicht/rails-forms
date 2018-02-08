@@ -4,14 +4,20 @@
 THE DIFFERENCES BETWEEN FORM_FOR AND FORM_TAG
 This step will make heavy usage of form_for, the high-powered alternative to form_tag. The biggest difference between these two helpers is that form_for creates a form specifically for a model object. form_for is full of convenient features.
 
+
+## paths vs route helpers
+By design, Rails was meant to be flexible the result is that there are a number of ways to accomplish the same features. Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
+
+
 # Rails: The CUD of CRUD
 
 ### Learning Objectives
-- Discuss forms in rails
-- What is a CSRF token?
-- Use form helpers to generate forms in rails
-- Use partials to DRY up our views
+-  Discuss forms in rails
+-  form_tag vs form_for 
+-  Use form helpers to generate forms in rails
+-  Use partials to DRY up our views
 
+# CUD
 ## Setting up our rails app
 
 Fork and clone this repo and follow these steps:
