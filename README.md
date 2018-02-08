@@ -25,11 +25,6 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 
 
 
-# How to Write Rails Forms
-https://launchacademy.com/codecabulary/learn-rails/writing-forms
-Forms are a good way to begin thinking about Rails' RESTful architecture, which maps HTTP requests to CRUD queries.
-
-
 ### regular HTML form
 ```html
 <form>
