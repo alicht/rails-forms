@@ -1,8 +1,12 @@
 ## Rails Forms
 
--   It may sound strange, but forms are possibly the most complicated thing about learning web development. Not necessarily because the code itself is difficult, but because you usually want to build forms that accomplish so many different things at once.
+### Learning Objectives
+-  Discuss forms in rails
+-  The magical form_tag
+-  See all the special Rails form helper syntax 
+-  Fill out the CUD in our app
 
-## To best understand Rails forms, we'll build a form and explain what everything is what's going on as we go along
+To best understand Rails forms, we'll build a form and explain what everything is and what's going on as we go along
 
 # CUD
 ## Setting up our rails app
@@ -17,18 +21,16 @@ Fork and clone this repo and follow these steps:
 
 # Creating a new Cat
 
-So far, we've done `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. What are we going to need? What do we get when we run `rails routes`?
+So far, we have `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. What are we going to need? 
 
 
 
 # How to Write Rails Forms
 https://launchacademy.com/codecabulary/learn-rails/writing-forms
-When you write a form, it will usually correlate with a database table: a signup page will enter a new user in the users table Forms are thus a good way to begin thinking about Rails' RESTful architecture, which maps HTTP requests to CRUD queries.
-## boxing off
+Forms are a good way to begin thinking about Rails' RESTful architecture, which maps HTTP requests to CRUD queries.
 
-Welcome to the world of Rails forms, which give users the ability to submit data into form fields.
 
-# regular HTML form
+### regular HTML form
 ```html
 <form>
   <label>Post title:</label><br>
@@ -41,7 +43,7 @@ Welcome to the world of Rails forms, which give users the ability to submit data
 </form>
 ```
 
-
+### what our Rails form will look like
 
 ```ruby
 <%= form_for(@post) do |f| %>
@@ -58,35 +60,12 @@ https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/rail
 
 
 
-## paths vs route helpers
-By design, Rails was meant to be flexible the result is that there are a number of ways to accomplish the same features. Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
+## Rails paths and URL helpers
+ Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
 
 ![screen shot 2018-02-08 at 12 45 31 am](https://user-images.githubusercontent.com/6153182/35957431-86c65e7c-0c69-11e8-9d43-aecb9e4671d7.png)
 
-## Rails URL helper
 
-## `link_to` method
-As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
-
-
-# Rails: The CUD of CRUD
-
-### Learning Objectives
--  Discuss forms in rails
--  form_tag vs form_for 
--  Use form helpers to generate forms in rails
--  Use partials to DRY up our views
-
-# CUD
-## Setting up our rails app
-
-Fork and clone this repo and follow these steps:
-- cd into `CatApp`
-- run `bundle install`
-- run `rails db:create`
-- run `rails db:migrate`
-- run `rails db:seed`
-- run `rails s` and visit `localhost:3000`
 
 # We have th 'R', but are missing the 'C', 'U', 'D'
 
@@ -128,7 +107,6 @@ end
 ```
 
 
-
 # Form_For
 {{{ it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit }}}
 
@@ -167,7 +145,6 @@ THEN I need to create a view template for it on `views/cats/new.html.erb`:
 <% end %>
 ```
 
-
 This creates a blank `cat` object that we're going to pass into our view.
 ### We now have the ability to create a new cat!!
 
@@ -199,6 +176,10 @@ but...  we want to see the `edit` link on the page:
 <%= link_to "Edit Cat", edit_cat_path(@cat) %>
 ```
 `(@cat)` will transform to the id & make it the right path
+
+### `link_to` method
+As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
+
 
 ### ok, so we refresh... but we still need an UPDATE method
 
@@ -246,17 +227,5 @@ First thing we have to do is add the `destroy` action to our `cats_controller.rb
 ```
 
 
-# DRYing up our forms!
-
-Take a look at our edit and new views. That form looks pretty similar, right? Let's abstract it out into a PARTIAL!
-
-We're going to make a new file, `_form.html.erb`, within the `views/cats` directory. Then, we're going to take the form and put it in there.
-
-Then, any time we want to include a form, we can just include this line in our erb file:
-
-```html
-<%= render partial: 'form'%>
-```
-
-Easy peasy!
+And we now have CRUD functionality!
 
