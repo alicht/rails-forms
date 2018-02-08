@@ -51,7 +51,6 @@ So far, we have `index` and `show` methods in our controller. But we're going to
   <%= f.submit %>
 <% end %>
 ```
-https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/rails-forms-overview
 
 -  `form_for` is a ruby method into which a Ruby object is passed. This means that a form that utilizes form_for is directly connected with an Active Record model
 
@@ -61,11 +60,11 @@ https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/rail
 
 -  `form_for` handles the retrieval of values from your object model and will also try to route the form to the appropriate action specified in the controller
 
--  The form_for method accepts the instance of the model as an argument. Using this argument, form_for is able to make a bunch of assumptions for you.
+-  `form_for` method accepts the instance of the model as an argument. Using this argument, form_for is able to make a bunch of assumptions for you.
 
--  form_for yields an object of class FormBuilder
+-  `form_for` yields an object of class FormBuilder
 
--  form_for automatically knows the standard route (it follows RESTful conventions) for the form data
+-  `form_for` automatically knows the standard route (it follows RESTful conventions) for the form data
 
 
 
