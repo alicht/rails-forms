@@ -47,31 +47,26 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 
 ```ruby
 <%= form_for(@post) do |f| %>
-  <%= f.text_field :title %><br>
-  <%= f.text_area :description %><br>
+  <%= f.text_field :title %>
+  <%= f.text_area :description %>
   <%= f.submit %>
 <% end %>
 ```
 
+## The Magic that is `form_for`
 
--  `form_for` is a ruby method into which a Ruby object is passed. This means that a form that utilizes form_for is directly connected with an Active Record model
+-  `form_for` is a ruby method into which a Ruby object is "interacted" with. A form that utilizes `form_for` is directly connected with an Active Record model
 
--  `form_for` yields a `FormBuilder` object that lets you create form elements that correspond to attributes in the model
+-  `form_for` is  an advanced form helper that will yield a `FormBuilder` object (ie what we're using as `|f|`) that you use to generate your form elements (text fields, labels, a submit button, etc) and correspond to attributes in the model
 
--  `form_for` is essentially an advanced form helper that will yield a `FormBuilder` object that you use to generate your form elements (text fields, labels, a submit button, etc.)
-
--  `form_for` handles the retrieval of values from your object model and will also try to route the form to the appropriate action specified in the controller
-
--  `form_for` method accepts the instance of the model as an argument. Using this argument, form_for is able to make a bunch of assumptions for you.
-
--  `form_for` yields an object of class FormBuilder
+-  `form_for`and will also try to route the form to the appropriate action specified in the controller
 
 -  `form_for` automatically knows the standard route (it follows RESTful conventions) for the form data
 
 
 
 ## Rails paths and URL helpers
- Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
+Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
 
 ![screen shot 2018-02-08 at 12 45 31 am](https://user-images.githubusercontent.com/6153182/35957431-86c65e7c-0c69-11e8-9d43-aecb9e4671d7.png)
 
@@ -79,7 +74,7 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 
 # We have th 'R', but are missing the 'C', 'U', 'D'
 
-So far, we've done `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. Which do we need? What do we get when we run `rails routes`?
+So far, the above code has `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. Which do we need? What do we get when we run `rails routes`?
 
 
 ## 1) 🚀 Create
@@ -130,10 +125,15 @@ def cat_params
   params.require(:cat).permit(:name, :breed)
 end
 ```
-### Using the `form_for` helper
+### strong params
 
+## Views! Using the `form_for` helper
+
+After adding `new` & `create` actions to our controller, it's time to add a corresponding view
 
 THEN I need to create a view template for it on `views/cats/new.html.erb`:
+
+Here, let's write a form:
 ```ruby
 <%= form_for @cat do |f| %>
   <%= f.text_field :name, placeholder: "Name" %>
@@ -142,7 +142,7 @@ THEN I need to create a view template for it on `views/cats/new.html.erb`:
 <% end %>
 ```
 
-#### and let's add a link to this on our `index` page so we can see it
+#### and let's add a link to on our `index` page so we can see it
 
 `views/cats/index.html.erb`:
 
@@ -165,16 +165,17 @@ link_to is a Rails built in helper that helps generate an anchor tag.
 
 As you can see, even though we never added HTML code for the link –– e.g., <a href="..."></a> –– the link_to method rendered the correct tag for us.
 
+### what is/ how'd we get `new_cat_path`?
+
+Rails Routes! :smiley:
 
 
-# Let's examine `form_for`
-{{{ it goes through and explains line by line what each thing is https://learn.co/tracks/full-stack-web-dev-with-react/rails/crud-with-rails/form_for-on-edit }}}
+## a little more on `form_for` after we've seen it in action
 
-The |f| is an iterator variable that we can use on the new form object that will allow us to dynamically assign form field elements to each of the post data attributes, along with auto filling the values for each field. We get this ActionView functionality because we're using the form_for method, which gives us access to the FormBuilder module in Rails. 
 
 By passing in the attribute as a symbol (e.g. :title) that will automatically tell the form field what model attribute to be associated with.
 
-Because form_for is bound directly with the Post model, we need to pass the model name into the Active Record `update` method in the controller.
+Because `form_for` is bound directly with the Post model, we need to pass the model name into the Active Record `update` method in the controller.
 
 We're saying that we expect there to be a `cat` in what we get back from the server, and that cat should have the fields `name` and `breed`.
 
@@ -182,6 +183,7 @@ Instead of having to write the form ourselves, with the path and the method and 
 
 
 ### We now have the ability to create a new cat!!
+
 
 ## 2) 🚀 Edit
 
