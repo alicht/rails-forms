@@ -1,9 +1,9 @@
 ## Rails Forms
 
 ### Learning Objectives
--  Discuss forms in rails
--  The magical `form_tag` :crystal_ball:
--  See all the special Rails form helper syntax 
+-  Review what we learned this morning (ie the "R" in CRUD) 
+-  Rails' magical `form_tag` :crystal_ball:
+-  See all of the special Rails form helper syntax 
 -  Fill out the CUD in our app
 
 To best understand Rails forms, we'll build a form and explain what everything is and what's going on as we go along
