@@ -2,14 +2,14 @@
 
 ### Learning Objectives
 -  Discuss forms in rails
--  The magical form_tag
+-  The magical `form_tag` :crystal_ball:
 -  See all the special Rails form helper syntax 
 -  Fill out the CUD in our app
 
 To best understand Rails forms, we'll build a form and explain what everything is and what's going on as we go along
 
 # CUD
-## Setting up our rails app
+## But first, let's set up our rails app
 
 Fork and clone this repo and follow these steps:
 - cd into `CatApp`
@@ -95,7 +95,7 @@ def new
 end
 ```
 
-This will creates a blank `cat` object that we're going to pass into our view.
+This will create a blank `cat` object that we're going to pass into our view.
 
 
 ### `create`
