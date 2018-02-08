@@ -8,12 +8,7 @@
 
 To best understand Rails forms, we'll build a form and explain what everything is and what's going on as we go along
 
-# CUD
-
-![Alt Text](https://media.giphy.com/media/Lhiu75VagupBm/giphy.gif)
-
 ## But first, let's set up our rails app
-
 
 
 Fork and clone this repo and follow these steps:
@@ -23,10 +18,6 @@ Fork and clone this repo and follow these steps:
 - run `rails db:migrate`
 - run `rails db:seed`
 - run `rails s` and visit `localhost:3000`
-
-# Creating a new Cat
-
-So far, we have `index` and `show` methods in our controller. But we're going to need some others in order to enable full CRUD functionality. What are we going to need? 
 
 
 
@@ -43,7 +34,7 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 </form>
 ```
 
-### what our Rails form will look like
+### what a Rails form looks like
 
 ```ruby
 <%= form_for(@post) do |f| %>
@@ -53,7 +44,7 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 <% end %>
 ```
 
-## The Magic that is `form_for`
+## The Magic of `form_for`
 
 -  `form_for` is a ruby method into which a Ruby object is "interacted" with. A form that utilizes `form_for` is directly connected with an Active Record model
 
@@ -66,13 +57,15 @@ So far, we have `index` and `show` methods in our controller. But we're going to
 
 
 ## Rails paths and URL helpers
-Routes are a great example of this - let's learn how to leverage built-in URL helper methods instead of hard coding route paths into an application.
+We can leverage built-in URL helper methods instead of hard coding route paths into an application.
 
 ![screen shot 2018-02-08 at 12 45 31 am](https://user-images.githubusercontent.com/6153182/35957431-86c65e7c-0c69-11e8-9d43-aecb9e4671d7.png)
 
+# CUD
 
+![Alt Text](https://media.giphy.com/media/Lhiu75VagupBm/giphy.gif)
 
-# We have th 'R', but are missing the 'C', 'U', 'D'
+### We have th 'R', but are missing the 'C', 'U', 'D'
 
 So far, the above code has `index` and `show` methods in our controller. But! We are going to need some others in order to create CRUD. Which do we need? What do we get when we run `rails routes`?
 
@@ -108,7 +101,10 @@ end
 ```
 #### what are `redirect_to` & `cat_path`? What are they doing?
 
-Also... wouldn't it be better to check out our params first before we create the cat? We know what a cat needs to have in order to be created. Let's adjust that.
+#rails_routes sunglasses: :v:
+
+#### Also... 
+Wouldn't it be better to check out our params first before we create the cat? We know what a cat needs to have in order to be created. Let's adjust that.
 
 ```rb
 def create
